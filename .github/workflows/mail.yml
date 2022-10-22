@@ -1,0 +1,19 @@
+name: Deploy website on push
+on:
+  push :
+    branches:
+      - master
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v2
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp.alfaisal-it.com
+        username: tagvpn@tagvpn.alfaisal-it.com
+        password: ${{ secrets.TAG_VPN_FTP_PASSWORD }}
