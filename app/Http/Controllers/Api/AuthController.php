@@ -27,7 +27,6 @@ class AuthController extends Controller
             $data = [
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'phone'=>$request->phone,
                 'password'=>Hash::make($request->password),
             ];
 

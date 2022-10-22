@@ -33,7 +33,6 @@ class RegistrationReqest extends FormRequest
         return [
             'name'=>'required|min:3|max:20',
             'email'=>'required|email:rfc,dns',
-            'phone'=>'required|max:11|min:11',
             'password'=>'required|max:20|min:8'
         ];
     }
