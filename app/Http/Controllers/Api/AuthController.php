@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RegistrationReqest;
 use App\Models\User;
-use App\Repositories\JwtRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Repositories\JwtRepository;
 use Illuminate\Support\Facades\Log;
-use DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegistrationReqest;
 
 class AuthController extends Controller
 {
