@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\JwtRepositoryInterface;
 use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use URL;
 
 class JwtRepository implements JwtRepositoryInterface
@@ -45,7 +46,7 @@ class JwtRepository implements JwtRepositoryInterface
     {
         try {
             $key = 'Courier_secret';
-            $decoded = JWT::decode($token, $key, ['HS256']);
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
             return $decoded;
         } catch (\Firebase\JWT\ExpiredException $e) {
             return ['tokenExpired' => true];

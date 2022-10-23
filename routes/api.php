@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PremiumSubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,17 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::POST('user/registration',[AuthController::class,'register']);
+
+Route::POST('registration',[AuthController::class,'register']);
+Route::POST('login',[AuthController::class,'login']);
+Route::post('social/login', [AuthController::class, 'socialLogin']);
+Route::POST('forgot-password/send-otp',[AuthController::class,'sendForgotPasswordOtp']);
+Route::POST('forgot-password/verify-otp',[AuthController::class,'verifyForgotPassword']);
+Route::POST('forgot-password/reset-password',[AuthController::class,'resetPassword']);
+Route::POST('forgot-password/reset-password',[AuthController::class,'resetPassword']);
+
+Route::middleware(['jwtauth'])->group(function(){
+    Route::POST('change-password',[AuthController::class,'changePassword']);
+    Route::GET('premium-subscription/list',[PremiumSubscriptionController::class,'list']);
+});
+
