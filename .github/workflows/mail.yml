@@ -15,5 +15,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
       with:
         server: ftp.tagvpn.net
-        username: mhm.api@api.mhm.alfaisal-it.com
+        username: tagvpnne_dev@tagvpn.net
         password: ${{ secrets.TAG_VPN_FTP_PASSWORD }}
