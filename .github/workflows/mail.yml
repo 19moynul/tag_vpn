@@ -14,6 +14,6 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
       with:
-        server: ftp.alfaisal-it.com
-        username: tagvpn@tagvpn.alfaisal-it.com
+        server: ftp.tagvpn.net
+        username: mhm.api@api.mhm.alfaisal-it.com
         password: ${{ secrets.TAG_VPN_FTP_PASSWORD }}
