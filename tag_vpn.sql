@@ -84,8 +84,10 @@ CREATE TABLE `tbl_premium_subscription` (
   `validity` varchar(100) NOT NULL,
   `free_days` varchar(100) NOT NULL,
   `status` int DEFAULT '1' COMMENT '1=active & 0=deactive',
+  `price` float NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 );
@@ -97,6 +99,7 @@ CREATE TABLE `tbl_premium_subscription` (
 
 LOCK TABLES `tbl_premium_subscription` WRITE;
 /*!40000 ALTER TABLE `tbl_premium_subscription` DISABLE KEYS */;
+INSERT INTO `tbl_premium_subscription` VALUES (1,'Anual','subtitle','1 month','1 day',1,100,'2022-10-23 03:17:48',NULL,NULL);
 /*!40000 ALTER TABLE `tbl_premium_subscription` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,14 +144,15 @@ CREATE TABLE `tbl_user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(150) NOT NULL,
+  `password` varchar(150) DEFAULT NULL,
   `account_type` varchar(50) DEFAULT 'normal' COMMENT 'normal,facebook,google',
+  `auth_id` varchar(100) DEFAULT NULL,
   `status` int DEFAULT '1' COMMENT '1=active & 0=deactive',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-);
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,6 +161,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
+INSERT INTO `tbl_user` VALUES (1,'moynul','19moynul@gmail.com','$2y$10$Sv6eOIFOYKq7n.wAYp/9HeSVGqmaEABe4YZOajzyHnUYWrrTKA4xa','normal',NULL,1,'2022-10-23 01:35:58','2022-10-22 20:55:37'),(2,'moynul','19moynuls@gmail.com','$2y$10$ZEXYOiK7JHL8NqooGXZer.9Zf92ecZHxzjsuI4TBxsQKuhcgBH.8S','normal',NULL,1,'2022-10-23 02:21:38',NULL),(3,'moynul','19smoynul@gmail.com','$2y$10$6687N61/3QUfLTM3zudHLuCaDGb9dQapB6kmbuDvC0KlnCo4otA0O','normal',NULL,1,'2022-10-23 04:51:56',NULL);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-22 10:38:12
+-- Dump completed on 2022-10-23 10:58:15

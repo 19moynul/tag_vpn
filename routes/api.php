@@ -32,5 +32,6 @@ Route::POST('forgot-password/reset-password',[AuthController::class,'resetPasswo
 Route::middleware(['jwtauth'])->group(function(){
     Route::POST('change-password',[AuthController::class,'changePassword']);
     Route::GET('premium-subscription/list',[PremiumSubscriptionController::class,'list']);
+    Route::GET('premium-subscription/buy/{sbscription_id}',[PremiumSubscriptionController::class,'buySubscription']);
 });
 

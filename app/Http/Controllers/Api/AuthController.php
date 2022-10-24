@@ -11,6 +11,7 @@ use App\Http\Requests\RegistrationReqest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\SocialLoginRequest;
 use App\Mail\MailResetPassword;
+use App\Models\DeviceToUser;
 use App\Models\ResetPassword;
 use App\Models\User;
 use App\Repositories\JwtRepository;
@@ -72,6 +73,18 @@ class AuthController extends Controller
              if($user){
                 if(Hash::check($request->password,$user->password)){
                     if($user->status == Constant::USER_STATUS_ACTIVE){
+                        $numberofConnectedDevice = DeviceToUser::where('user_id',$user->id)->where('uid','!=',$request->uid)->count();
+                        if($numberofConnectedDevice >= 5){
+                           return response()->json(['success'=>false,'message'=>'Sorry ! max 5 user can use this account'],409);
+                        }
+
+                        DeviceToUser::updateOrCreate([
+                            'user_id'=>$user->id,'uid'=>$request->uid
+                        ],[
+                            'device_name'=>$request->device_name,
+                            'uid'=>$request->uid
+                        ]);
+
                          $payLoad = [
                             'user_id' => $user->id,
                             'name'=>$user->name,
@@ -94,7 +107,7 @@ class AuthController extends Controller
                 return response()->json(['success'=>false,'message'=>'Invalid email or password address'],409);
              }
         }catch(\Exception $e){
-             Log::error('error in login api : '.$e->getMessage());
+            Log::error('error in login api : '.$e->getMessage());
             return response()->json(serverError(),500);
         }
     }
@@ -177,6 +190,19 @@ class AuthController extends Controller
         $user =  Socialite::driver($request->type)->userFromToken($request->token);
         if ($user) {
             $userInfo = User::where('email', $user->getEmail())->where('auth_id',$user->getId())->first();
+
+            $numberofConnectedDevice = DeviceToUser::where('user_id',$userInfo->id)->where('uid','!=',$request->uid)->count();
+            if($numberofConnectedDevice >= 5){
+                return response()->json(['success'=>false,'message'=>'Sorry ! max 5 user can use this account'],409);
+            }
+
+            DeviceToUser::updateOrCreate([
+                'user_id'=>$userInfo->id,'uid'=>$request->uid
+            ],[
+                'device_name'=>$request->device_name,
+                'uid'=>$request->uid
+            ]);
+
             if (!$userInfo) {
                 $data = [
                     'name' => $user->getName(),

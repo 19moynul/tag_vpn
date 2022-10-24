@@ -6,4 +6,9 @@
         }
     }
 
+
+    function userId(){
+        request()->decoded->user_id;
+    }
+
 ?>
