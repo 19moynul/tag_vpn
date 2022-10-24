@@ -39,12 +39,13 @@ Route::group(['prefix' => 'admin'], function () {
 
         // Premium Subscription To User
         Route::get('/premium-sub-to-user', [PremiumSubscriptionToUserController::class, 'index'])->name('indexPremiumSubToUser');
+        Route::get('/premium-sub-to-user/change/status/{id}/{status}', [PremiumSubscriptionToUserController::class, 'changeStatus'])->name('user_subscription.change_status');
         Route::get('/premium-sub-to-user/add', [PremiumSubscriptionToUserController::class, 'indexAddPremiumSubToUser'])->name('indexAddPremiumSubToUser');
         Route::post('/premium-sub-to-user/store', [PremiumSubscriptionToUserController::class, 'storePremiumSubToUser'])->name('storePremiumSubToUser');
         Route::get('/premium-sub-to-user/edit/{id}', [PremiumSubscriptionToUserController::class, 'indexEditPremiumSubToUser']);
         Route::post('/premium-sub-to-user/update', [PremiumSubscriptionToUserController::class, 'updatePremiumSubToUser'])->name('updatePremiumSubToUser');
         Route::get('/premium-sub-to-user/delete/{id}', [PremiumSubscriptionToUserController::class, 'deletePremiumSubToUser'])->name('deletePremiumSubToUser');
 
-        
+
     });
 });

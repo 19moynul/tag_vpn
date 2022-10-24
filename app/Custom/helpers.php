@@ -28,3 +28,13 @@ if (!function_exists("isActive")) {
         }
     }
 }
+
+function getUserSubscriptionStatus($status){
+    if($status == 0){
+        return 'Pending';
+    }else if($status == 1){
+        return 'Active';
+    }else{
+        return 'Cancelled';
+    }
+}

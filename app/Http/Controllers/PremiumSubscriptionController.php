@@ -13,8 +13,7 @@ class PremiumSubscriptionController extends Controller
 {
     public function index()
     {
-
-        $premium_subscription = PremiumSubscription::all();
+        $premium_subscription = PremiumSubscription::whereNull('deleted_at')->get();
         return view('admin/premium-subscription', compact('premium_subscription'));
     }
 
@@ -36,7 +35,7 @@ class PremiumSubscriptionController extends Controller
             $premium_subscription->price = $request->price;
             $premium_subscription->free_days = $request->free_days;
             $premium_subscription->deleted_at =  $adminInfo->username;
-           
+
             if ($premium_subscription->save()) {
                 DB::commit();
                 return redirect('admin/premium-subscription');
@@ -60,8 +59,9 @@ class PremiumSubscriptionController extends Controller
                 'name' => $request->name,
                 'subtitle' => $request->subtitle,
                 'validity' => $request->validity,
-                'price' => $request->price
-            
+                'price' => $request->price,
+                'free_days' => $request->free_days
+
             ]);
             return redirect('admin/premium-subscription');
         } catch (\Exception $e) {
@@ -71,7 +71,7 @@ class PremiumSubscriptionController extends Controller
 
     public function deletePremiumSubscription($id)
     {
-        PremiumSubscription::findOrFail($id)->delete();
+        PremiumSubscription::findOrFail($id)->update(['deleted_at'=>Carbon::now()]);
         return redirect('admin/premium-subscription');
     }
 }

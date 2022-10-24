@@ -16,7 +16,7 @@ class PremiumSubscriptionToUserController extends Controller
         $premium_sub_to_user  = DB::table('tbl_premium_subscription_to_user')
             ->leftJoin('tbl_user', 'tbl_premium_subscription_to_user.user_id', '=', 'tbl_user.id')
             ->leftJoin('tbl_premium_subscription', 'tbl_premium_subscription_to_user.user_id', '=', 'tbl_premium_subscription.id')
-            ->select('tbl_user.*', 'tbl_premium_subscription_to_user.*', 'tbl_premium_subscription.*')
+            ->select('tbl_user.name as user_name','tbl_user.email', 'tbl_premium_subscription_to_user.*','tbl_premium_subscription_to_user.id as subscription_to_user_id','tbl_premium_subscription_to_user.status as user_subscription_status','tbl_premium_subscription_to_user.free_days as free_days_left', 'tbl_premium_subscription.*',)
             ->get();
 
         return view('admin/premium-sub-to-user', compact('premium_sub_to_user'));
@@ -78,5 +78,10 @@ class PremiumSubscriptionToUserController extends Controller
     {
         PremiumSubscriptionToUser::findOrFail($id)->delete();
         return redirect('admin/premium-sub-to-user');
+    }
+
+    public function changeStatus($id,$status){
+        PremiumSubscriptionToUser::where('id',$id)->update(['status'=>$status]);
+        return redirect()->back()->with('success','account activated successfully');
     }
 }

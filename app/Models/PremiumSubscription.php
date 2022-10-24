@@ -9,4 +9,5 @@ class PremiumSubscription extends Model
 {
     use HasFactory;
     public $table = 'tbl_premium_subscription';
+    public $guarded = [];
 }

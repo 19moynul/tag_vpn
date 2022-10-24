@@ -48,7 +48,7 @@
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
-                        
+
                     </div>
                     <div class="row">
                              <div class="mb-3 col-6">
