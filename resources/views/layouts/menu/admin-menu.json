@@ -7,35 +7,35 @@
 
     {
         "icon": "fas fa-th-list",
-        "title": "Manage Brand",
+        "title": "Manage Premium Subscription ",
         "children": [
             {
                 "icon": "fas fa-angle-right",
-                "title": "Manage Brand",
-                "url": "admin/brand"
+                "title": "Manage Premium Subscription ",
+                "url": "admin/premium-subscription"
             },
           
             {
                 "icon": "fas fa-angle-right",
-                "title": "Create Brand",
-                "url": "admin/brand/add"
+                "title": "Create Premium Subscription",
+                "url": "admin/premium-subscription/add"
             }
         ]
     },
 
     {
         "icon": "fas fa-th-list",
-        "title": "Manage Product Attribute",
+        "title": " Premium Subscription to user ",
         "children": [
             {
                 "icon": "fas fa-angle-right",
-                "title": "Manage Product Attribute",
-                "url": "admin/product_atr"
+                "title": "Manage Premium Subscription to user",
+                "url": "admin/premium-sub-to-user"
             },
             {
                 "icon": "fas fa-angle-right",
-                "title": "Create Product Attribute",
-                "url": "admin/product_atr/add"
+                "title": "Create Premium Subscription to user",
+                "url": "admin/premium-sub-to-user/add"
             }
         ]
     },
