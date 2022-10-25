@@ -38,3 +38,8 @@ function getUserSubscriptionStatus($status){
         return 'Cancelled';
     }
 }
+
+
+function userId(){
+        request()->decoded->user_id;
+    }
