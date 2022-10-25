@@ -41,5 +41,5 @@ function getUserSubscriptionStatus($status){
 
 
 function userId(){
-        request()->decoded->user_id;
+        return request()->decoded->user_id;
     }
