@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Enums\Constant;
 use App\Http\Controllers\Controller;
 use App\Models\PremiumSubscription;
-use App\Models\PremiumSubscriptionTouser;
+use App\Models\PremiumSubscriptionToUser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,11 +22,11 @@ class PremiumSubscriptionController extends Controller
         try{
             $subscription = PremiumSubscription::where('id',$subscription_id)->first();
             if($subscription){
-                $userHasSubscription = PremiumSubscriptionTouser::where('user_id',userId())->whereDate('deactivated_at', '>=', Carbon::now())->whereIn('status',[0,1])->first();
+                $userHasSubscription = PremiumSubscriptionToUser::where('user_id',userId())->whereDate('deactivated_at', '>=', Carbon::now())->whereIn('status',[0,1])->first();
                 if(!$userHasSubscription){
                     $activated_at = date('Y-m-d H:i:s');
                     $deactivated_at = date('Y-m-d H:i:s', strtotime("+".$subscription->validity));
-                    PremiumSubscriptionTouser::create([
+                    PremiumSubscriptionToUser::create([
                         'subscription_id'=>$subscription->id,
                         'user_id'=>request()->decoded->user_id,
                         'activated_at'=>$activated_at,
