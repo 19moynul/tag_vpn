@@ -19,6 +19,7 @@ use App\Repositories\JwtRepository;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use DB;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 
 class AuthController extends Controller
