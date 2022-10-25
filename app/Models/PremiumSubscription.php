@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PremiumSubscription extends Model
 {
     use HasFactory;
-    protected $table  = 'tbl_premium_subscription';
+    public $table = 'tbl_premium_subscription';
+    public $guarded = [];
 }

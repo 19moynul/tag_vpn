@@ -1,0 +1,19 @@
+[
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Dashboard",
+        "url": "admin/dashboard"
+    },
+
+    {
+        "icon": "fas fa-th-list",
+        "title": "Manage Subscription ",
+        "url": "admin/premium-subscription"
+    },
+    {
+        "icon": "fab fa-accusoft",
+        "title": "Manage Subscribed user",
+        "url": "admin/premium-sub-to-user"
+    }
+
+]
