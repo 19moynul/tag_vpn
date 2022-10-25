@@ -23,7 +23,7 @@ class PremiumSubscriptionController extends Controller
             $subscription = PremiumSubscription::where('id',$subscription_id)->first();
             if($subscription){
                 $userHasSubscription = PremiumSubscriptionTouser::where('user_id',userId())->whereDate('deactivated_at', '>=', Carbon::now())->whereIn('status',[0,1])->first();
-                if($userHasSubscription){
+                if(!$userHasSubscription){
                     $activated_at = date('Y-m-d H:i:s');
                     $deactivated_at = date('Y-m-d H:i:s', strtotime("+".$subscription->validity));
                     PremiumSubscriptionTouser::create([
