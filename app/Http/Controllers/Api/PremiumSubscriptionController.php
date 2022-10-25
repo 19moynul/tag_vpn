@@ -45,6 +45,7 @@ class PremiumSubscriptionController extends Controller
                 return response()->json(['success'=>false,'message'=>'Sorry ! subscription not found'],400);
             }
         }catch(\Exception $e){
+            return $e;
             Log::error('error in buy subscrption : '.$e->getMessage());
             return response()->json(serverError(),500);
         }
