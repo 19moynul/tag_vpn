@@ -14,7 +14,7 @@ class PremiumSubscriptionController extends Controller
     public function index()
     {
 
-    
+
         $premium_subscription = PremiumSubscription::whereNull('deleted_at')->get();
         return view('admin/premium-subscription', compact('premium_subscription'));
     }
