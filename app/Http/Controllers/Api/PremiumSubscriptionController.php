@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 class PremiumSubscriptionController extends Controller
 {
     public function list(){
-        $data = PremiumSubscription::select('id','name','subtitle','price','validity','free_days')->where('status',Constant::SUBSCRIPTION_ACTIVE)->get();
+        $data = PremiumSubscription::select('id','name','subtitle','price','validity','free_days')->where('status',Constant::SUBSCRIPTION_ACTIVE)->whereNull('deleted_at')->get();
         return response()->json(['success'=>true,'data'=>$data]);
     }
 
