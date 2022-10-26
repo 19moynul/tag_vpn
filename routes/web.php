@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Theme\DashboardController;
 use App\Http\Controllers\PremiumSubscriptionController;
 use App\Http\Controllers\PremiumSubscriptionToUserController;
@@ -58,11 +60,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/premium-sub-to-user/delete/{id}', [PremiumSubscriptionToUserController::class, 'deletePremiumSubToUser'])->name('deletePremiumSubToUser');
 
 
-        Route::get('user/create', [AdminController::class, 'create'])->name('user.create');
-        Route::post('user/store', [AdminController::class, 'store'])->name('user.store');
-        Route::get('user/list', [AdminController::class, 'list'])->name('user.list');
-        Route::get('user/edit/{id}', [AdminController::class, 'edit'])->name('user.edit');
-        Route::get('user/delete/{id}', [AdminController::class, 'delete'])->name('user.delete');
+        Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
+        Route::post('admin/store', [AdminController::class, 'store'])->name('admin.store');
+        Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
+        Route::get('admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+        Route::get('admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
+
+        Route::get('user/list', [UserController::class, 'list'])->name('user.list');
+
+
 
     });
 });

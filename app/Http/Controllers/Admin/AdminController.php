@@ -21,20 +21,20 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('admin.users.store');
+        return view('admin.admin.store');
     }
 
     public function list()
     {
         $data = Admin::orderBy('id', 'DESC')->get();
-        return view('admin.users.list', compact('data'));
+        return view('admin.admin.list', compact('data'));
     }
 
 
     public function edit($id)
     {
         $data = Admin::where('id', $id)->first();
-        return view('admin.users.store', compact('data',));
+        return view('admin.admin.store', compact('data',));
     }
 
 
@@ -54,7 +54,7 @@ class AdminController extends Controller
                 $text = 'created';
             }
             DB::commit();
-            return redirect()->back()->with('success', 'users has been ' . $text . ' successfully');
+            return redirect()->back()->with('success', 'Admin has been ' . $text . ' successfully');
         } catch (\Exception $e) {
             DB::rollback();
             Log::error('User -> store : ' . $e->getMessage());

@@ -15,6 +15,11 @@
         "title": "Manage Subscribed user",
         "url": "admin/premium-sub-to-user"
     },
+    {
+        "icon": "fa fa-user",
+        "title": "Manage all users",
+        "url": "admin/user/list"
+    },
 
     {
         "icon": "fas fa-user-shield",
@@ -23,12 +28,12 @@
             {
                 "icon": "fas fa-user-cog",
                 "title": "Add new admin",
-                "url": "admin/user/create"
+                "url": "admin/admin/create"
             },
             {
                 "icon": "fas fa-users-cog",
                 "title": "Admin list",
-                "url": "admin/user/list"
+                "url": "admin/admin/list"
             },
             {
                 "icon": "fas fa-unlock-alt",

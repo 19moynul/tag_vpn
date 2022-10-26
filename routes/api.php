@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\PremiumSubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,7 @@ Route::middleware(['jwtauth'])->group(function(){
     Route::POST('change-password',[AuthController::class,'changePassword']);
     Route::GET('premium-subscription/list',[PremiumSubscriptionController::class,'list']);
     Route::GET('premium-subscription/buy/{sbscription_id}',[PremiumSubscriptionController::class,'buySubscription']);
+    Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+    Route::get('home', [HomeController::class, 'home'])->name('home');
 });
 

@@ -55,4 +55,8 @@ function userId(){
         }
         return array_merge($info, $others);
     }
+
+    function deviceId(){
+        return request()->decoded->device_id;
+    }
 }

@@ -8,7 +8,7 @@
                 <!--mi card header started-->{{ $title }} ADMIN
             </div>
             <!--end of mi card header-->
-            <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="mi-body">
                     <!--mi-card body started--> <input name="_token" type="hidden" value="{{ csrf_token() }}"> @if(isset($data)) <input name="id" type="hidden" value="{{ $data->id }}"> @endif <div class="row">
                         <div class="form-group col-sm-"><label>NAME <b class="text-danger">*</b> </label><input type="text" placeholder="NAME" name="name" id="name" class="form-control" value="{{ isset($data)?$data->name:old('name') }}" required> </div>

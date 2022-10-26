@@ -78,7 +78,7 @@ class AuthController extends Controller
                            return response()->json(['success'=>false,'message'=>'Sorry ! max 5 user can use this account'],409);
                         }
 
-                        DeviceToUser::updateOrCreate([
+                        $device = DeviceToUser::updateOrCreate([
                             'user_id'=>$user->id,'uid'=>$request->uid
                         ],[
                             'device_name'=>$request->device_name,
@@ -89,6 +89,7 @@ class AuthController extends Controller
                             'user_id' => $user->id,
                             'name'=>$user->name,
                             'email'=>$user->email,
+                            'device_id'=>$device->id
                         ];
                         $token = $this->jwtRepo->setJwtToken($payLoad);
                         return response()->json([
@@ -196,7 +197,7 @@ class AuthController extends Controller
                 return response()->json(['success'=>false,'message'=>'Sorry ! max 5 user can use this account'],409);
             }
 
-            DeviceToUser::updateOrCreate([
+            $device = DeviceToUser::updateOrCreate([
                 'user_id'=>$userInfo->id,'uid'=>$request->uid
             ],[
                 'device_name'=>$request->device_name,
@@ -216,12 +217,14 @@ class AuthController extends Controller
                     'user_id' => $userId,
                     'name' => $user->getName(),
                     'email' => $user->getEmail(),
+                    'device_id'=>$device->id
                 ];
             }else{
                 $payLoad = [
                     'user_id' => $userInfo->id,
                     'name' => $userInfo->name,
                     'email' => $userInfo->email,
+                    'device_id'=>$device->id
                 ];
             }
 
