@@ -14,6 +14,28 @@
         "icon": "fab fa-accusoft",
         "title": "Manage Subscribed user",
         "url": "admin/premium-sub-to-user"
+    },
+
+    {
+        "icon": "fas fa-user-shield",
+        "title": "Manage Admin",
+        "children":[
+            {
+                "icon": "fas fa-user-cog",
+                "title": "Add new admin",
+                "url": "admin/user/create"
+            },
+            {
+                "icon": "fas fa-users-cog",
+                "title": "Admin list",
+                "url": "admin/user/list"
+            },
+            {
+                "icon": "fas fa-unlock-alt",
+                "title": "Change password",
+                "url": "admin/change-password"
+            }
+        ]
     }
 
 ]

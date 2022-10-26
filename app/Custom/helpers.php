@@ -43,3 +43,16 @@ function getUserSubscriptionStatus($status){
 function userId(){
         return request()->decoded->user_id;
     }
+
+
+    if (!function_exists("getFormInfo")) {
+    function getFormInfo($isEditInfo, $others = [])
+    {
+        if ($isEditInfo) {
+            $info = ['title' => 'EDIT', 'status' => 'success', 'button_name' => 'UPDATE', 'image_class' => 'edit-input'];
+        } else {
+            $info = ['title' => 'CREATE', 'status' => 'success', 'button_name' => 'CREATE', 'image_class' => ''];
+        }
+        return array_merge($info, $others);
+    }
+}
