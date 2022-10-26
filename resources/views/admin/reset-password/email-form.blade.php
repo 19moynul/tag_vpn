@@ -41,7 +41,7 @@
                     <div class="mi-footer">
                         <div class="row">
                             <div class="col-sm-5 m-auto">
-                                <button class="butn success">RESET PASSWORD</button>
+                                <button class="butn success w-100">SEND EMAIL</button>
                             </div>
                         </div>
                     </div>
