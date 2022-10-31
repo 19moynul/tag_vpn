@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\PremiumSubscriptionController;
+use App\Http\Controllers\Api\ServerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,7 @@ Route::middleware(['jwtauth'])->group(function(){
     Route::GET('premium-subscription/buy/{sbscription_id}',[PremiumSubscriptionController::class,'buySubscription']);
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     Route::get('home', [HomeController::class, 'home'])->name('home');
+    Route::get('server/list', [ServerController::class, 'serverList'])->name('serverList');
+    Route::get('server/details/{id}', [ServerController::class, 'serverDetails'])->name('serverDetails');
 });
 
