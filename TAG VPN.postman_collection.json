@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "98b641ed-0ed5-4dcd-85f3-5fc4811c5b31",
+		"name": "TAG VPN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9900662"
+	},
+	"item": [
+		{
+			"name": "REGISTRATION AND LOGIN",
+			"item": [
+				{
+					"name": "REGISTRATION",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "moynul",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "moynul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345689",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "12345689",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/registration",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "moynul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345689",
+									"type": "text"
+								},
+								{
+									"key": "device_name",
+									"value": "samsung",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SOCIAL LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "2122dewrre34232",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "google",
+									"description": "only 2 value google/facebook",
+									"type": "text"
+								},
+								{
+									"key": "device_name",
+									"value": "samsung",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/social/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"social",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FORGOT PASSWORD",
+			"item": [
+				{
+					"name": "VERIFY OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "19moynul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "otp",
+									"value": "32490",
+									"type": "text"
+								},
+								{
+									"key": "user_type",
+									"value": "2",
+									"description": "just hard code this value and pass this in api",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/forgot-password/verify-otp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forgot-password",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEND OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "moynul@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/forgot-password/send-otp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forgot-password",
+								"send-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RESET PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "19moynul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/forgot-password/reset-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forgot-password",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PREMIUM SUBSCRIPTION",
+			"item": [
+				{
+					"name": "LIST",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{user_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/premium-subscription/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"premium-subscription",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUY SUBSCRIUPTION",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{user_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/premium-subscription/buy/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"premium-subscription",
+								"buy",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SERVER",
+			"item": [
+				{
+					"name": "SERVER LIST",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{user_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/server/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"server",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SERVER DETAILS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{user_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/server/details/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"server",
+								"details",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHANGE PASSWORD",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{user_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "new_password",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "confirm_password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/change-password",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{user_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/logout",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HOME",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{user_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/home?country=bd",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"home"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "bd",
+							"description": "user country code , must be in uppercase"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://tagvpn.net/api",
+			"type": "string"
+		},
+		{
+			"key": "user_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJpYXQiOjE2NjY3NjAzMjcsImV4cCI6MTY2ODA1NjMyNywiZGF0YSI6eyJ1c2VyX2lkIjoxLCJuYW1lIjoibW95bnVsIiwiZW1haWwiOiIxOW1veW51bEBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOjh9fQ.rst7fBG1xSfYNQ4_oGERizrViNpbONUOji9xXLpZLBI",
+			"type": "string"
+		}
+	]
+}
